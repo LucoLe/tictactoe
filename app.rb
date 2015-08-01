@@ -1,7 +1,11 @@
 require 'sinatra'
 require './lib/tictactoe.rb'
+require 'rack-flash'
 
 class TicTacToe < Sinatra::Base
+  enable :sessions
+  use Rack::Flash
+
   get '/' do
     erb :index
   end

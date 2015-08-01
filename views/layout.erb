@@ -25,14 +25,15 @@
     <![endif]-->
   </head>
   <body>
-  <% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
+  <% flash.keys.each do |name| %>
+    <% if flash[name].is_a?(String) %>
       <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <div id=<% "flash_#{name}" %>><%= flash[name] %></div>
       </div>
     <% end %>
   <% end %>
+
     <%= yield %>
   </body>
 </html>

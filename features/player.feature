@@ -8,9 +8,9 @@ Feature: Create players
   Scenario: Try to submit no players' names
     Given I am on the index page
     When I submit no name
-    Then I should see the index page with "warning"
+    Then I should see the index page with warning "Please enter names for both players"
 
   Scenario: Try to submit only one name
     Given I am on the index page
     When I submit only one name
-    Then I should see the index page with "warning"
+    Then I should see the index page with warning "Please enter names for both players"

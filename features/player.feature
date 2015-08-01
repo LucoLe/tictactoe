@@ -1,6 +1,16 @@
-Feature: Using Capybara and Rack-Test to Interact with Sinatra App
+Feature: Create players
 
-  Scenario: Complete Book Review
-    Given I am on a book review site
-    When I submit a book review
-    Then I should see the saved details confirmed
+  Scenario: Create players successfully
+    Given I am on the index page
+    When I submit players with correct credentials
+    Then I should see the main game page with players names on top
+
+  Scenario: Try to submit no players' names
+    Given I am on the index page
+    When I submit no name
+    Then I should see the index page with "warning"
+
+  Scenario: Try to submit only one name
+    Given I am on the index page
+    When I submit only one name
+    Then I should see the index page with "warning"

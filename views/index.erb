@@ -1,2 +1,33 @@
-<p>Hello from index</p>
-<button class="btn btn-default" type="submit">Button</button>
+<div class="container-fluid">
+  <div class="row col-sm-offset-4 col-sm-4 vertical-align">
+    <div class="panel panel-default">
+      <div class="panel-heading">Start new game</div>
+      <div class="panel-body">
+        <form class="form-horizontal" action="/game" method="post">
+          <div class="form-group">
+            <label for="player1" class="col-sm-3 control-label">Player one:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="player1" name="player1" placeholder="Enter player one's name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="player2" class="col-sm-3 control-label">Player two:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="player2" name="player2" placeholder="Enter player two's name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-default">Play</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

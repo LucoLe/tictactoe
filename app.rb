@@ -22,12 +22,14 @@ class TicTacToe < Sinatra::Base
   end
 
   get '/game/:id' do
-    @params = params
-    @session = session
     @player1 = Player.new(1,session[:player1], "X")
     @player2 = Player.new(2,session[:player2], "O")
     @game = Game.new(session[:game_board])
-    erb :game
+    if @game.valid_move?(params[:id].to_i)
+      erb :game
+    else
+      redirect to("/game/#{session[:prev_id]}")
+    end
   end
 end
 

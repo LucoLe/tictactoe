@@ -1,7 +1,8 @@
 <script src="/assets/javascripts/board.js"></script>
 <% session[:player1] = @player1.name %>
 <% session[:player2] = @player2.name %>
-<% session[:game_board] = @game.board %>
+<%= session[:prev_id] = params[:id] %>
+<%= session[:game_board] = @game.board %>
 
 <div id="currentMarker" class="<%= @player1.marker %>"></div>
 

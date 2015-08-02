@@ -17,6 +17,7 @@ class TicTacToe < Sinatra::Base
     end
     @player1 = Player.new(1,params[:player1], "X")
     @player2 = Player.new(2,params[:player2], "O")
+    @game = Game.new
     erb :game
   end
 
@@ -25,6 +26,7 @@ class TicTacToe < Sinatra::Base
     @session = session
     @player1 = Player.new(1,session[:player1], "X")
     @player2 = Player.new(2,session[:player2], "O")
+    @game = Game.new(session[:game_board])
     erb :game
   end
 end

@@ -1,6 +1,7 @@
 <script src="/assets/javascripts/board.js"></script>
 <% session[:player1] = @player1.name %>
 <% session[:player2] = @player2.name %>
+<% session[:game_board] = @game.board %>
 
 <div id="currentMarker" class="<%= @player1.marker %>"></div>
 
@@ -12,21 +13,20 @@
       </div>
       <div class="panel-body">
         <table class="board">
-          <tr>
-            <td><a href="/game/1"><div class="board-field"><span class="glyphicon glyphicon-one-fine-empty-dot"></span></div></a></td>
-            <td><a href="/game/2"><div class="board-field"><span class="X">X</span></div></a></td>
-            <td><a href="/game/3"><div class="board-field empty"></div></a></td>
-          </tr>
-          <tr>
-            <td><a href="/game/4"><div class="board-field empty"></div></a></td>
-            <td><a href="/game/5"><div class="board-field empty"></div></a></td>
-            <td><a href="/game/6"><div class="board-field empty"></div></a></td>
-          </tr>
-          <tr>
-            <td><a href="/game/7"><div class="board-field empty"></div></a></td>
-            <td><a href="/game/8"><div class="board-field empty"></div></a></td>
-            <td><a href="/game/9"><div class="board-field empty"></div></a></td>
-          </tr>
+          <% (0..2).each do |row| %>
+            <tr>
+              <% (0..2).each do |col| %>
+                <% cell_nr = 3*row + col %>
+                <% if @game.board[cell_nr] == "-" %>
+                  <td><a href="/game/<%= cell_nr + 1 %>"><div class="board-field empty"></div></a></td>
+                <% elsif @game.board[cell_nr] == "X" %>
+                  <td><div class="board-field"><span class="X">X</span></div></td>
+                <% else %>
+                  <td><div class="board-field"><span class="glyphicon glyphicon-one-fine-empty-dot"></span></div></td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
         </table>
       </div>
     </div>

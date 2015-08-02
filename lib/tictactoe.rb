@@ -8,3 +8,11 @@ class Player
   end
 
 end
+
+class Game
+  attr_accessor :board
+
+  def initialize(board = Array.new(9) { |i| i = "-" })
+    @board = board
+  end
+end

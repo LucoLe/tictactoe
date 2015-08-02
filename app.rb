@@ -19,6 +19,14 @@ class TicTacToe < Sinatra::Base
     @player2 = Player.new(2,params[:player2], "O")
     erb :game
   end
+
+  get '/game/:id' do
+    @params = params
+    @session = session
+    @player1 = Player.new(1,session[:player1], "X")
+    @player2 = Player.new(2,session[:player2], "O")
+    erb :game
+  end
 end
 
 TicTacToe.run! if __FILE__ == $0

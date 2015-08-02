@@ -1,2 +1,34 @@
-<p><%= @player1.name %></p>
-<p><%= @player2.name %></p>
+<script src="/assets/javascripts/board.js"></script>
+<% session[:player1] = @player1.name %>
+<% session[:player2] = @player2.name %>
+
+<div id="currentMarker" class="<%= @player1.marker %>"></div>
+
+<div class="container-fluid">
+  <div class="row col-sm-offset-3 col-sm-6 vertical-align">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        <%= @player1.name %>: <%= @player1.marker %> vs <%= @player2.name %>: <%= @player2.marker %>
+      </div>
+      <div class="panel-body">
+        <table class="board">
+          <tr>
+            <td><a href="/game/1"><div class="board-field"><span class="glyphicon glyphicon-one-fine-empty-dot"></span></div></a></td>
+            <td><a href="/game/2"><div class="board-field"><span class="X">X</span></div></a></td>
+            <td><a href="/game/3"><div class="board-field empty"></div></a></td>
+          </tr>
+          <tr>
+            <td><a href="/game/4"><div class="board-field empty"></div></a></td>
+            <td><a href="/game/5"><div class="board-field empty"></div></a></td>
+            <td><a href="/game/6"><div class="board-field empty"></div></a></td>
+          </tr>
+          <tr>
+            <td><a href="/game/7"><div class="board-field empty"></div></a></td>
+            <td><a href="/game/8"><div class="board-field empty"></div></a></td>
+            <td><a href="/game/9"><div class="board-field empty"></div></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

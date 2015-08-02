@@ -1,3 +1,39 @@
 .vertical-align {
   margin-top: 200px;
 }
+
+.board {
+    border-collapse: collapse;
+    border-style: hidden;
+    float:none;
+    margin:0 auto;
+}
+
+.board td, .board th {
+    border: 1px solid black;
+}
+
+.board-field {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+}
+
+td a:hover {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.glyphicon {
+  margin-top: -20px;
+}
+
+.glyphicon.glyphicon-one-fine-empty-dot:before {
+  content:"\25cb";
+  font-size: 100px;
+}
+
+.X {
+  font-size: 75px;
+  /*margin-top: -20px;*/
+}

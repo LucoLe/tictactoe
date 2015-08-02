@@ -17,10 +17,14 @@ class Game
   end
 
   def valid_move?(cell_nr)
-    if cell_nr.to_i.between?(1,9) && (@board[cell_nr] == "-")
+    if cell_nr.to_i.between?(1,9) && (@board[cell_nr - 1] == "-")
       true
     else
       false
     end
+  end
+
+  def place_marker(cell_nr, marker)
+    @board[cell_nr - 1] = marker
   end
 end

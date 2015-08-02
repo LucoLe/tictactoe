@@ -1,10 +1,10 @@
 <script src="/assets/javascripts/board.js"></script>
 <% session[:player1] = @player1.name %>
 <% session[:player2] = @player2.name %>
-<%= session[:prev_id] = params[:id] %>
 <%= session[:game_board] = @game.board %>
+<%= session[:current_marker] = @current_marker %>
 
-<div id="currentMarker" class="<%= @player1.marker %>"></div>
+<div id="currentMarker" class="<%= @current_marker %>"></div>
 
 <div class="container-fluid">
   <div class="row col-sm-offset-3 col-sm-6 vertical-align">
@@ -19,7 +19,7 @@
               <% (0..2).each do |col| %>
                 <% cell_nr = 3*row + col %>
                 <% if @game.board[cell_nr] == "-" %>
-                  <td><a href="/game/<%= cell_nr + 1 %>"><div class="board-field empty"></div></a></td>
+                  <td><a href="/game/<%= cell_nr + 1 %>" id="cell<%= cell_nr + 1 %>"><div class="board-field empty"></div></a></td>
                 <% elsif @game.board[cell_nr] == "X" %>
                   <td><div class="board-field"><span class="X">X</span></div></td>
                 <% else %>

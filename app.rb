@@ -39,12 +39,6 @@ class TicTacToe < Sinatra::Base
       @game.place_marker(params[:id].to_i, session[:current_marker])
       session[:winner] = @game.check_winner
       if session[:winner]
-      # if @game.check_winner
-      #   session[:winner] = @game.check_winner
-        # session[:game_board] = @game.board
-        # session[:player1] = @player1.name
-        # session[:player2] = @player2.name
-        #session[:current_marker] = session[:current_marker]
         redirect to('/gameover')
       else
         @current_marker = session[:current_marker] == "X" ? "O" : "X"

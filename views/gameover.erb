@@ -10,6 +10,22 @@
         <% else %>
           <h3>Congratulations <%= session[:player2] %> wins!</h3>
         <% end %>
+
+
+        <form action="/game" method="post">
+          <div class="form-group">
+            <input type="hidden" name="player1" value="<%= session[:player2] %>" >
+            <input type="hidden" name="player2" value="<%= session[:player1] %>" >
+          </div>
+          <div class="form-group">
+            <div >
+              <button type="submit" class="btn btn-default">Play again</button>
+            </div>
+          </div>
+        </form>
+        <p>or</p>
+        <a href="/" class="btn btn-default">New game</a>
+
       </div>
     </div>
   </div>

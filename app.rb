@@ -21,6 +21,8 @@ class TicTacToe < Sinatra::Base
       flash[:danger] = "Please enter names for both players"
       redirect back
     end
+    session[:winner] = nil
+    session[:game_board] = nil
     @player1 = Player.new(params[:player1], "X")
     session[:player1] = @player1.name
     @current_marker = @player1.marker

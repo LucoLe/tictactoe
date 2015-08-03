@@ -116,3 +116,21 @@ end
 Then(/^I should see the game over page with draw message$/) do
   expect(page).to have_text "The game was a draw!"
 end
+
+When(/^Play again is clicked$/) do
+  click_on 'Play again'
+end
+
+Then(/^I should see the main game page with empty board and players' names switched$/) do
+  expect(URI.parse(current_url).path).to eq('/game')
+  expect(page.all('div.empty').size).to eq(9)
+  expect(page).to have_text "PlayerTwo: X vs PlayerOne: O"
+end
+
+When(/^New game is clicked$/) do
+  click_on 'New game'
+end
+
+Then(/^I should see the index page$/) do
+  expect(URI.parse(current_url).path).to eq('/')
+end

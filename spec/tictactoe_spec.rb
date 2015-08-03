@@ -8,7 +8,6 @@ describe Game do
     end
 
     it "with state array" do
-      # testBoard = ["X", "X", "O", "-", "O", "-", "O", "-", "X"]
       game = Game.new(testBoard)
       expect(game.board).to eq(testBoard)
     end
@@ -23,7 +22,7 @@ describe Game do
     it "should return false when a move is not possible" do
       game = Game.new(testBoard)
       expect(game.valid_move?(1)).to eq(false)
-      expect(game.valid_move?(4)).to eq(false)
+      expect(game.valid_move?(5)).to eq(false)
       expect(game.valid_move?("a5asdf")).to eq(false)
     end
   end

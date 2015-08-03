@@ -37,3 +37,7 @@ td a:hover {
   font-size: 75px;
   /*margin-top: -20px;*/
 }
+
+.winner {
+  background-color: #337ab7;
+}

@@ -44,7 +44,7 @@ describe Game do
     it "should be draw" do
       game = Game.new(draw)
       expect(game.winner_combination).to eq(nil)
-      expect(game.check_winner).to eq("draw")
+      expect(game.check_winner).to eq(["draw"])
     end
 
     it "should be middle row" do

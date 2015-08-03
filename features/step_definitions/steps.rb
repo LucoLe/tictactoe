@@ -46,7 +46,7 @@ Then(/^I should see the main game page with next move$/) do
   end
 end
 
-When(/^I try to access wrong "([^"]*)"$/) do |arg1|
+When(/^I try to access wrong cell$/) do
   fill_in 'player1', with: 'PlayerOne'
   fill_in 'player2', with: 'PlayerTwo'
   click_on 'Play'
@@ -65,4 +65,54 @@ Then(/^I should see the last correct game page$/) do
     expect(span).to have_css("span.#{css_class}")
     css_class = css_class == "X" ? "glyphicon" : "X"
   end
+end
+
+When(/^PlayerOne wins with last column combination$/) do
+  fill_in 'player1', with: 'PlayerOne'
+  fill_in 'player2', with: 'PlayerTwo'
+  click_on 'Play'
+  click_link 'cell3'
+  click_link 'cell1'
+  click_link 'cell6'
+  click_link 'cell7'
+  click_link 'cell9'
+end
+
+# Then(/^I should see the game over page with PlayerOne wins$/) do
+#   expect(page).to have_text "Congratulations PlayerOne wins!"
+# end
+
+When(/^PlayerTwo wins with middle row combination$/) do
+  fill_in 'player1', with: 'PlayerOne'
+  fill_in 'player2', with: 'PlayerTwo'
+  click_on 'Play'
+  click_link 'cell1'
+  click_link 'cell4'
+  click_link 'cell3'
+  click_link 'cell5'
+  click_link 'cell7'
+  click_link 'cell6'
+end
+
+Then(/^I should see the game over page with "([^"]*)" wins$/) do |arg1|
+  expect(page).to have_text "Congratulations #{arg1} wins!"
+end
+
+When(/^The game ends with a draw$/) do
+  fill_in 'player1', with: 'PlayerOne'
+  fill_in 'player2', with: 'PlayerTwo'
+  click_on 'Play'
+  click_link 'cell1'
+  click_link 'cell2'
+  click_link 'cell3'
+  click_link 'cell5'
+  click_link 'cell4'
+  click_link 'cell6'
+  click_link 'cell8'
+  click_link 'cell7'
+  click_link 'cell9'
+end
+
+Then(/^I should see the game over page with draw message$/) do
+  expect(page).to have_text "The game was a draw!"
 end

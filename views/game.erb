@@ -1,8 +1,9 @@
 <script src="/assets/javascripts/board.js"></script>
 <% session[:player1] = @player1.name %>
 <% session[:player2] = @player2.name %>
-<%= session[:game_board] = @game.board %>
-<%= session[:current_marker] = @current_marker %>
+<% session[:game_board] = @game.board %>
+<% session[:current_marker] = @current_marker %>
+
 
 <div id="currentMarker" class="<%= @current_marker %>"></div>
 
@@ -10,7 +11,7 @@
   <div class="row col-sm-offset-3 col-sm-6 vertical-align">
     <div class="panel panel-default">
       <div class="panel-heading text-center">
-        <%= @player1.name %>: <%= @player1.marker %> vs <%= @player2.name %>: <%= @player2.marker %>
+        <h4><%= @player1.name %>: <%= @player1.marker %> vs <%= @player2.name %>: <%= @player2.marker %></h4>
       </div>
       <div class="panel-body">
         <table class="board">
@@ -18,12 +19,26 @@
             <tr>
               <% (0..2).each do |col| %>
                 <% cell_nr = 3*row + col %>
+                <% if session[:winner] != nil %>
+                  <% winner_class = session[:winner].include?(cell_nr+1) ? "winner" : "" %>
+                <% end %>
+
                 <% if @game.board[cell_nr] == "-" %>
-                  <td><a href="/game/<%= cell_nr + 1 %>" id="cell<%= cell_nr + 1 %>"><div class="board-field empty"></div></a></td>
+                  <% if session[:winner] != nil %>
+                    <td><div class="board-field"></div></td>
+                  <% else %>
+                    <td><a href="/game/<%= cell_nr + 1 %>" id="cell<%= cell_nr + 1 %>"><div class="board-field empty"></div></a></td>
+                  <% end %>
+
                 <% elsif @game.board[cell_nr] == "X" %>
-                  <td><div class="board-field"><span class="X">X</span></div></td>
+                  <td><div class="board-field <%= winner_class %>">
+                    <span class="X">X</span>
+                  </div></td>
+
                 <% else %>
-                  <td><div class="board-field"><span class="glyphicon glyphicon-one-fine-empty-dot"></span></div></td>
+                  <td><div class="board-field <%= winner_class %>">
+                    <span class="glyphicon glyphicon-one-fine-empty-dot"></span>
+                  </div></td>
                 <% end %>
               <% end %>
             </tr>

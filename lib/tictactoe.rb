@@ -1,8 +1,7 @@
 class Player
 
-  attr_accessor :id, :name, :marker
-  def initialize(id, name, marker)
-    @id = id
+  attr_accessor :name, :marker
+  def initialize(name, marker)
     @name = name
     @marker = marker
   end
@@ -58,7 +57,7 @@ class Game
   def check_winner
     winner = nil
     if !winner_combination && !@board.include?("-")
-      winner = "draw"
+      winner = ["draw"]
     elsif winner_combination
       winner = winner_combination
     end

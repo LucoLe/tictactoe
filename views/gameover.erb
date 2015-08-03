@@ -1,0 +1,17 @@
+<%= erb :game %>
+<div class="container-fluid">
+  <div class="row col-sm-offset-3 col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <% if session[:winner] == ["draw"] %>
+          <h3>The game was a draw!</h3>
+        <% elsif session[:current_marker] == "X"%>
+          <h3>Congratulations <%= session[:player1] %> wins!</h3>
+        <% else %>
+          <h3>Congratulations <%= session[:player2] %> wins!</h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

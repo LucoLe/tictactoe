@@ -5,9 +5,10 @@ require 'rack-flash'
 class TicTacToe < Sinatra::Base
   enable :sessions
   use Rack::Flash
+
   # @method get_root
   # @overload get "/"
-  # Gets the start page and sets the session to nil exept for the
+  # Gets the start page and sets the session to nil except for the
   # flash part
   get '/' do
     session[:winner] = nil
@@ -19,6 +20,10 @@ class TicTacToe < Sinatra::Base
     erb :index
   end
 
+  # @method post_game
+  # @overload post "/game"
+  # Posts to the /game path. If there is a problem with the player names
+  # the users will be redirected to the start page. Otherwise the game begins.
   post '/game' do
     if params[:player1] == '' || params[:player2] == ''
       flash[:danger] = "Please enter names for both players"
@@ -36,6 +41,10 @@ class TicTacToe < Sinatra::Base
     erb :game
   end
 
+  # @method get_game
+  # @overload get "/game/:id"
+  # Gets to the page with the selected move. Here the controller checks if the
+  # input is correct and checks if the game is finished.
   get '/game/:id' do
     @player1 = Player.new(session[:player1], "X")
     @player2 = Player.new(session[:player2], "O")
@@ -55,6 +64,11 @@ class TicTacToe < Sinatra::Base
     end
   end
 
+  # @method get_gameover
+  # @overload get "/gameover"
+  # Gets to the game over page where the result of the game is displayed and
+  # there are two choices - either to the same opponents to play again or
+  # a new game to start with new opponents.
   get '/gameover' do
     @player1 = Player.new(session[:player1], "X")
     @player2 = Player.new(session[:player2], "O")

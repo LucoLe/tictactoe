@@ -69,11 +69,11 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  capybara
-  cucumber
-  rack-flash3
-  rspec
-  rspec-expectations
-  selenium-webdriver
-  sinatra
-  yard
+  capybara (~> 2.4.4)
+  cucumber (~> 2.0.0)
+  rack-flash3 (~> 1.0.5)
+  rspec (~> 3.2.0)
+  rspec-expectations (~> 3.2.1)
+  selenium-webdriver (~> 2.45.0)
+  sinatra (~> 1.4.6)
+  yard (~> 0.8.7.6)

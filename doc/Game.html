@@ -99,7 +99,20 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>TODO - all the methods convert the cell number from 1 based array to 0
+based array. Probably the board should be a hash with number keys and then
+the methods should be rewritten to work with the actual value provided.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -149,7 +162,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_winner-instance_method" title="#check_winner (instance method)">- (Object) <strong>check_winner</strong> </a>
+      <a href="#check_winner-instance_method" title="#check_winner (instance method)">- (nil or Array) <strong>check_winner</strong> </a>
     
 
     
@@ -163,7 +176,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if the game is still in progress, if it is a draw or if there is a
+winner.</p>
+</div></span>
   
 </li>
 
@@ -188,7 +204,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Game.</p>
+<p>provided.</p>
 </div></span>
   
 </li>
@@ -233,7 +249,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if the move is possible.</p>
+</div></span>
   
 </li>
 
@@ -241,7 +259,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#winner_combination-instance_method" title="#winner_combination (instance method)">- (Object) <strong>winner_combination</strong> </a>
+      <a href="#winner_combination-instance_method" title="#winner_combination (instance method)">- (nil or Array) <strong>winner_combination</strong> </a>
     
 
     
@@ -255,7 +273,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks the array for a winning combination of cells.</p>
+</div></span>
   
 </li>
 
@@ -278,13 +298,34 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Game</p>
+<p>provided. When an array with the current state is given then the board
+variable stores that state.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>Creates</span>
+      
+      
+        <span class='type'>(<tt>optional Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a new empty board when no parameter is</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -292,12 +333,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_board'>board</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@board</span> <span class='op'>=</span> <span class='id identifier rubyid_board'>board</span>
@@ -340,12 +381,12 @@
       <pre class="lines">
 
 
-12
-13
-14</pre>
+15
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_board'>board</span>
   <span class='ivar'>@board</span>
@@ -365,30 +406,64 @@
       <div class="method_details first">
   <h3 class="signature first" id="check_winner-instance_method">
   
-    - (<tt>Object</tt>) <strong>check_winner</strong> 
+    - (<tt>nil or Array</tt>) <strong>check_winner</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if the game is still in progress, if it is a draw or if there is a
+winner.</p>
+
+<p>the game is a draw it returns an array with “draw” (the output has to be an
+array it can&#39;t be only a string). If there is a winner the method
+returns the winning combination.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil or Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the game is still in progress it returns nil. If</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_winner'>check_winner</span>
   <span class='id identifier rubyid_winner'>winner</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -419,12 +494,12 @@
       <pre class="lines">
 
 
-26
-27
-28</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_place_marker'>place_marker</span><span class='lparen'>(</span><span class='id identifier rubyid_cell_nr'>cell_nr</span><span class='comma'>,</span> <span class='id identifier rubyid_marker'>marker</span><span class='rparen'>)</span>
   <span class='ivar'>@board</span><span class='lbracket'>[</span><span class='id identifier rubyid_cell_nr'>cell_nr</span> <span class='op'>-</span> <span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_marker'>marker</span>
@@ -446,11 +521,33 @@
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>Checks if the move is possible.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>The</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>cell number. The first cell is 1</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -471,16 +568,16 @@
       <pre class="lines">
 
 
-18
-19
-20
-21
-22
-23
-24</pre>
+26
+27
+28
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid_move?'>valid_move?</span><span class='lparen'>(</span><span class='id identifier rubyid_cell_nr'>cell_nr</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_cell_nr'>cell_nr</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='period'>.</span><span class='id identifier rubyid_between?'>between?</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>9</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@board</span><span class='lbracket'>[</span><span class='id identifier rubyid_cell_nr'>cell_nr</span> <span class='op'>-</span> <span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -497,31 +594,50 @@
       <div class="method_details ">
   <h3 class="signature " id="winner_combination-instance_method">
   
-    - (<tt>Object</tt>) <strong>winner_combination</strong> 
+    - (<tt>nil or Array</tt>) <strong>winner_combination</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks the array for a winning combination of cells.</p>
+
+<p>if it finds a winning combo it returns an array with cell numbers of the
+combo in 1 based array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil or Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there is no winning combination it returns nil,</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
 43
 44
 45
@@ -534,10 +650,23 @@
 52
 53
 54
-55</pre>
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/tictactoe.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_winner_combination'>winner_combination</span>
   <span class='id identifier rubyid_combination'>combination</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -575,7 +704,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Aug  4 09:29:47 2015 by
+  Generated on Tue Aug  4 10:08:43 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.6).
 </div>

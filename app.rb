@@ -5,7 +5,10 @@ require 'rack-flash'
 class TicTacToe < Sinatra::Base
   enable :sessions
   use Rack::Flash
-
+  # @method get_root
+  # @overload get "/"
+  # Gets the start page and sets the session to nil exept for the
+  # flash part
   get '/' do
     session[:winner] = nil
     session[:game_board] = nil

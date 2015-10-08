@@ -2,7 +2,7 @@
 
 In this sample app I have developed a fully functioning version of [T​icTacToe](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
-* It is a 2­player game (no computer opponent), paying in the same browser window.
+* It is a 2­ player game (no computer opponent), paying in the same browser window.
 * Before each match the players are asked for their names.
 * Players switch after every turn.
 * Once a round is finished, the winner (or draw) will be displayed on a leaderboard.
@@ -10,7 +10,16 @@ In this sample app I have developed a fully functioning version of [T​icTacToe
 # Comments
 
 I have used git for version control and a combination of Capybara, Cucumber and RSpec to develop the application in BDD manor. I have configured Capybara to use drivers for Chrome and Mozilla for in browser testing, and rack_test for simulated browser testing.
-I have used Twitter Bootstrap and JQuery to create the frontend of the application.
+I have used Twitter Bootstrap and JQuery to create the frontend of the application. And YARD to create the documentation of the code.
+
+# To start the application
+
+In the project folder run the following commands:
+
+  - bundle install
+  - ruby app.rb
+
+After that the application can be tested on http://localhost:4567/
 
 # TODO
 
